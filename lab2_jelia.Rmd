@@ -3,7 +3,7 @@ title: "lab2_jelia"
 author: "James Elia"
 date: "8/31/2020"
 output: html_document
-bibliography: ~/UMass/Bio_597GE/references.bib
+bibliography: C:/Users/eliaj/OneDrive/Documents/UMass/references.bib
 ---
 
 ```{r setup, include=FALSE}
