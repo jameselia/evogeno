@@ -12,6 +12,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{sh git-config, eval=FALSE}
 git config --global --list | grep user
 ```
+# Welcome!
+This is my website for the UMass class Evolutionary Genomics, taught by Dr. Jeff Blanchard. I am a fourth year biology major with a minor in chemistry and a passion for research. I plan to pursue a PhD in biomedicine.
+
+## Labs
+
 [Evolutionary Genomics, Lab 1](lab1_jelia.html)
 
 ## References
