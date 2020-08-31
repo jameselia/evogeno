@@ -9,3 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{sh git-config, eval=FALSE}
+git config --global --list | grep user
+```
+[Evolutionary Genomics, Lab 1](lab1_jelia.html)
