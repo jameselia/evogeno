@@ -1,0 +1,38 @@
+---
+title: "lab2_jelia"
+author: "James Elia"
+date: "8/31/2020"
+output: html_document
+bibliography: ~/UMass/Bio_597GE/references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+###Exercise 1
+```{r}
+x=13 
+y=15
+x + y
+y - x
+x * y
+x / y
+```
+###Exercise 2
+```{r}
+x=2
+y=3
+x^5 > y^4
+```
+###Exercise 3
+```{r}
+x<-c(22,62,148,43,129)
+sum(x)
+x / sum(x)
+```
+###Exercise 4
+```{r}
+n<-c("A","T","C","G")
+sort(n)
+```

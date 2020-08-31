@@ -13,3 +13,16 @@ knitr::opts_chunk$set(echo = TRUE)
 git config --global --list | grep user
 ```
 [Evolutionary Genomics, Lab 1](lab1_jelia.html)
+
+## References
+
+Title                    = {R: A Language and Environment for Statistical Computing},
+  
+  Author                   = {{R Core Team}},
+ 
+  Year                     = {2015},
+
+  
+  Type                     = {Journal Article},
+  
+  Url                      = {http://www.R-project.org}
