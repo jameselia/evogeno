@@ -1,0 +1,100 @@
+---
+title: "lab3B_jelia"
+author: "James Elia"
+date: "9/7/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Lab 3B: Manipulating Data
+```{r, eval=FALSE}
+library(tidyverse)
+library(magrittr)
+library(dplyr)
+```
+
+```{r}
+surveys <- read.csv("C:/Users/eliaj/OneDrive/Documents/UMass/portal_data_joined.csv")
+```
+```{r}
+surveys_sml <- surveys %>%
+  filter(weight < 5) %>%
+  select(species_id, sex, weight)
+```
+## Challenge 1
+```{r}
+surveys %>%
+    filter(year < 1995) %>%
+    select(year, sex, weight)
+```
+
+## Challenge 2
+```{r}
+surveys_hindfoot_cm <- surveys %>%
+    filter(!is.na(hindfoot_length)) %>%
+    mutate(hindfoot_cm = hindfoot_length / 10) %>%
+    filter(hindfoot_cm < 3) %>%
+    select(species_id, hindfoot_cm)
+```
+
+## Challenge 3
+```{r}
+# 1.
+surveys %>%
+    count(plot_type) 
+# 2.
+surveys %>%
+    filter(!is.na(hindfoot_length)) %>%
+    group_by(species_id) %>%
+    summarize(
+        mean_hindfoot_length = mean(hindfoot_length),
+        min_hindfoot_length = min(hindfoot_length),
+        max_hindfoot_length = max(hindfoot_length),
+        n = n()
+    )
+# 3.
+surveys %>%
+    filter(!is.na(weight)) %>%
+    group_by(year) %>%
+    filter(weight == max(weight)) %>%
+    select(year, genus, species, weight) %>%
+    arrange(year)
+```
+## Challenge 4
+```{r}
+# 1.
+surveys_spread_genera <- surveys %>%
+  group_by(plot_id, year) %>%
+  summarize(n_genera = n_distinct(genus)) %>%
+  spread(year, n_genera)
+head(surveys_spread_genera)
+# 2.
+surveys_spread_genera %>%
+  gather("year", "n_genera", -plot_id)
+# 3.
+surveys_long <- surveys %>%
+  gather("measurement", "value", hindfoot_length, weight)
+# 4.
+surveys_long %>%
+  group_by(year, measurement, plot_type) %>%
+  summarize(mean_value = mean(value, na.rm=TRUE)) %>%
+  spread(measurement, mean_value)
+```
+
+# Making a CSV file
+            
+```{r}
+surveys_complete <- surveys %>%
+  filter(!is.na(weight),           
+         !is.na(hindfoot_length),
+         !is.na(sex))  
+species_counts <- surveys_complete %>%
+    count(species_id) %>% 
+    filter(n >= 50)
+surveys_complete <- surveys_complete %>%
+  filter(species_id %in% species_counts$species_id)
+write.csv(surveys_complete, path = "C:/Users/eliaj/OneDrive/Documents/UMass/surveys_complete.csv)
+```
