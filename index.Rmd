@@ -3,6 +3,8 @@ title: "index"
 author: "James Elia"
 date: "8/31/2020"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -20,6 +22,8 @@ This is my website for the UMass class Evolutionary Genomics, taught by Dr. Jeff
 [Evolutionary Genomics, Lab 1](lab1_jelia.html)
 
 [Evolutionary Genomics, Lab 2](lab2_jelia.html)
+
+[Evolutionary Genomics, Lab 3A](lab3A_jelia.html)
 
 ## References
 
