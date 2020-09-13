@@ -10,13 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Lab 3B: Manipulating Data
-```{r, eval=FALSE}
-library(tidyverse)
-library(magrittr)
-library(dplyr)
-```
-
 ```{r}
+library(tidyverse)
 surveys <- read.csv("C:/Users/eliaj/OneDrive/Documents/UMass/portal_data_joined.csv")
 ```
 ```{r}
@@ -96,5 +91,5 @@ species_counts <- surveys_complete %>%
     filter(n >= 50)
 surveys_complete <- surveys_complete %>%
   filter(species_id %in% species_counts$species_id)
-write.csv(surveys_complete, path = "C:/Users/eliaj/OneDrive/Documents/UMass/surveys_complete.csv)
+write_csv(surveys_complete, path = "C:/Users/eliaj/OneDrive/Documents/UMass/surveys_complete.csv")
 ```
