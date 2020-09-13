@@ -15,15 +15,17 @@ knitr::opts_chunk$set(echo = TRUE)
 git config --global --list | grep user
 ```
 # Welcome!
-This is my website for the UMass class Evolutionary Genomics, taught by Dr. Jeff Blanchard. I am a fourth year biology major with a minor in chemistry and a passion for research. I plan to pursue a PhD in biomedicine.
+This is my website for the UMass Amherst class Evolutionary Genomics, taught by Dr. Jeff Blanchard. I am a fourth year biology major with a minor in chemistry and a passion for research. I plan to pursue a PhD in biomedicine.
 
 ## Labs
 
-[Evolutionary Genomics, Lab 1](lab1_jelia.html)
+[Lab 1: Introduction to R and Reproducible Research](lab1_jelia.html)
 
-[Evolutionary Genomics, Lab 2](lab2_jelia.html)
+[Lab 2: Git, GitHub, and RStudio Projects](lab2_jelia.html)
 
-[Evolutionary Genomics, Lab 3A](lab3A_jelia.html)
+[Lab 3A: Starting with the Data](lab3A_jelia.html)
+
+[Lab 3B: Manipulating Data](lab3B_jelia.html)
 
 ## References
 
