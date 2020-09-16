@@ -27,6 +27,10 @@ This is my website for the UMass Amherst class Evolutionary Genomics, taught by 
 
 [Lab 3B: Manipulating Data](lab3B_jelia.html)
 
+[Lab 4A: Graphing COVID Data](lab4_jelia.html)
+
+[Lab 4B: Graphing Tutorial](lab4b_jelia.html)
+
 ## References
 
 Title                    = {R: A Language and Environment for Statistical Computing},
