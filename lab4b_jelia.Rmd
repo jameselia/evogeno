@@ -1,0 +1,38 @@
+---
+title: "lab4b_jelia"
+author: "James Elia"
+date: "9/14/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+surveys_complete <- read_csv("C:/Users/eliaj/OneDrive/Documents/UMass/portal_data_joined.csv")
+```
+
+```{r}
+ggplot(data = surveys_complete, aes(x = weight, y = hindfoot_length)) +
+  geom_point()
+ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) +
+    geom_point(alpha = 0.1, aes(color = species_id))
+ggplot(data = surveys_complete, 
+       mapping = aes(x = species_id, y = weight)) +
+   geom_point(aes(color = plot_type))
+```
+
+```{r}
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = weight)) +
+    geom_boxplot(alpha = 1) +
+    geom_jitter(alpha = .01, color = "tomato")
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = weight)) +
+  scale_y_log10() +
+    geom_violin(alpha = 1)
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = hindfoot_length)) +
+  geom_boxplot(alpha = 1)
+
+```
+

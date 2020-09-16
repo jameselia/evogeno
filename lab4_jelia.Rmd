@@ -1,0 +1,54 @@
+---
+title: "lab4_jelia"
+author: "James Elia"
+date: "9/14/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Lab 4: Manipulating COVID Data
+```{r}
+library(tidyverse)
+library(data.table)
+report_03_13_2020 <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-13-2020.csv")) %>% 
+  rename(Country_Region = "Country/Region", Province_State = "Province/State")
+report_09_13_2020 <- read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-13-2020.csv"))
+  
+```
+
+## Grouping by Country and by State (United States)
+
+```{r}
+report_03_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Country_Region)
+report_09_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Country_Region)
+filter(report_03_13_2020, Country_Region == "US")
+filter(report_09_13_2020, Country_Region == "US")
+Country_03_Deaths <- report_03_13_2020 %>%
+  group_by(Country_Region) %>%
+  summarize(Deaths = sum(Deaths))
+Country_09_Deaths <- report_09_13_2020 %>%
+  group_by(Country_Region) %>%
+  summarize(Deaths = sum(Deaths))
+Country_03_Deaths_Top10 <- Country_03_Deaths %>% 
+  arrange(desc(Deaths)) %>% 
+  slice(1:10)
+Country_09_Deaths_Top10 <- Country_09_Deaths %>% 
+  arrange(desc(Deaths)) %>% 
+  slice(1:10)
+ggplot(data = Country_03_Deaths_Top10, mapping = aes(x = Deaths, y = Country_Region)) +
+  geom_point(alpha = 1, color = "red")
+ggplot(data = Country_09_Deaths_Top10, mapping = aes(x = Deaths, y = Country_Region)) +
+  geom_point(alpha = 1, color = "red")
+ggplot(data = Country_03_Deaths_Top10, mapping = aes(x = Deaths, y = Country_Region)) +
+geom_bar(stat = 'identity', color= "red", fill = "red") 
+ggplot(data = Country_09_Deaths_Top10, mapping = aes(x = Deaths, y = Country_Region)) +
+geom_bar(stat = 'identity', color = "black", fill = "red")
+```
