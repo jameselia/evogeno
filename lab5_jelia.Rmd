@@ -234,6 +234,28 @@ time_series_deaths_per_confirmed %>%
   ggtitle("Top 10 Global COVID-19 Deaths/Confirmed")
   
 ```
+### Using Facet Wrap
+```{r}
+ time_series_deaths_per_confirmed %>% 
+  group_by(Country_Region,Date) %>% 
+    summarise_at(c("Confirmed", "Deaths"), sum) %>% 
+    filter (Country_Region %in% c("Brazil","India","Mexico","UK","US","Italy","Peru", "France", "Spain", "Iran")) %>% 
+  ggplot(aes(x = Date, y = Deaths / Confirmed, color = Country_Region)) +
+  geom_line() +
+   facet_wrap(~Country_Region) +
+  theme_dark()
+  ggtitle("Top 10 Global COVID-19 Deaths/Confirmed")
+  
+time_series_confirmed_long %>% 
+  group_by(Country_Region, Date) %>% 
+  filter(Country_Region == US)
+    ggplot(aes(x = Date,  y = Confirmed)) + 
+    geom_point() +
+    geom_line() +
+    ggtitle("US COVID-19 Confirmed")
+  
+```
+
 ### Animated Graphs
 ```{r}
 library(gganimate)
