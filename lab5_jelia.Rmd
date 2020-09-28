@@ -188,7 +188,7 @@ time_series_long_joined %>%
 dev.off()
 # Plot graph to a png outputfile
 ppi <- 300
-png("~/UMass/time_series_example_plot.png", width=8*ppi, height=8*ppi, res=ppi)
+png("C:/Users/eliaj/OneDrive/Documents/UMass/time_series_example_plot.png", width=8*ppi, height=8*ppi, res=ppi)
 time_series_long_joined %>% 
   group_by(Country_Region,Date) %>% 
   summarise_at(c("Confirmed", "Deaths"), sum) %>% 
@@ -200,8 +200,8 @@ time_series_long_joined %>%
 dev.off()
 ```
 ### RMarkdown Loading Images
-![US COVID-19 Deaths](~/UMass/time_series_example_plot.png) 
-<img src="~/UMass/time_series_example_plot.png" alt="US COVID-19 Deaths" style="width: 600px;"/>
+![US COVID-19 Deaths](C:/Users/eliaj/OneDrive/Documents/UMass/time_series_example_plot.png) 
+<img src="C:/Users/eliaj/OneDrive/Documents/UMass/time_series_example_plot.png" alt="US COVID-19 Deaths" style="width: 600px;"/>
 ### Interactive Graphs
 ```{r}
 library(plotly)
@@ -246,13 +246,14 @@ time_series_deaths_per_confirmed %>%
   theme_dark()
   ggtitle("Top 10 Global COVID-19 Deaths/Confirmed")
   
-time_series_confirmed_long %>% 
-  group_by(Country_Region, Date) %>% 
-  filter(Country_Region == US)
-    ggplot(aes(x = Date,  y = Confirmed)) + 
-    geom_point() +
+time_series_confirmed_long_states <- time_series_confirmed_long %>% 
+  group_by(Province_State, Date) %>% 
+  filter(Country_Region == "US") %>% 
+  summarise_at(c("Confirmed"), sum)
+    ggplot(time_series_confirmed_long_states, aes(x = Date,  y = Confirmed)) + 
     geom_line() +
     ggtitle("US COVID-19 Confirmed")
+    facet_wrap(~Province_State)
   
 ```
 
