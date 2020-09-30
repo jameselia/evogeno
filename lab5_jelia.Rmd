@@ -12,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Joining Data
 ```{r, fig.width = 5, fig.height = 10}
 library(tidyverse)
+library(ggplot2)
 Confirmed_State_3_13 <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-13-2020.csv")) %>%
   rename(Country_Region = "Country/Region", Province_State = "Province/State") %>% 
   filter (Country_Region == "US") %>% 
@@ -271,5 +272,17 @@ p <- ggplot(data_time, aes(x = Date,  y = Confirmed, color = Country_Region)) +
       ggtitle("Confirmed COVID-19 Cases") +
       geom_point(aes(group = seq_along(Date))) +
       transition_reveal(Date)
+
+data_time <- time_series_long_joined %>% 
+    group_by(Country_Region,Date) %>% 
+    summarise_at(c("Confirmed", "Deaths"), sum) %>% 
+    filter (Country_Region %in% c("China","Korea, South","Japan","Italy","US")) 
+p <- ggplot(data_time, aes(x = Date,  y = Confirmed, color = Country_Region)) + 
+      geom_point() +
+      geom_line() +
+      ggtitle("Confirmed COVID-19 Cases") +
+      geom_point(aes(group = seq_along(Date))) +
+      transition_reveal(Date) 
+anim_save("deaths_5_countries.gif", p)
 ```
 
