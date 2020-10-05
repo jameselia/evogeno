@@ -16,9 +16,12 @@ library(mapdata)
 library(lubridate)
 library(viridis)
 library(wesanderson)
+library(RColorBrewer)
+library(plotly)
 ```
 
 ```{r, ## example graphs}
+
 # World COVID Map
 daily_report <- read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/04-02-2020.csv")) %>% 
   rename(Long = "Long_") 
@@ -94,10 +97,6 @@ ggplot(data = us, mapping = aes(x = long, y = lat, group = group)) +
                          trans = "log10") +
   labs(title = "COVID-19 Confirmed Cases in the US'")
 
-library(RColorBrewer)
-## To display only colorblind-friendly brewer palettes, specify the option colorblindFriendly = TRUE as follow:
-## display.brewer.all(colorblindFriendly = TRUE)
-## Get and format the covid report data
 report_03_27_2020 <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/04-02-2020.csv")) %>% 
   rename(Long = "Long_") %>% 
   unite(Key, Admin2, Province_State, sep = ".") %>% 
@@ -144,7 +143,6 @@ ggplot(data = ma_county, mapping = aes(x = long, y = lat, group = group)) +
                          trans = "log10") +
   labs(title = "COVID-19 Confirmed Cases in Massachusetts'")
 
-library(plotly)
 ggplotly(
   ggplot(data = ma_county, mapping = aes(x = long, y = lat, group = group)) + 
   coord_fixed(1.3) + 

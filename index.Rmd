@@ -33,6 +33,10 @@ This is my website for the UMass Amherst class Evolutionary Genomics, taught by 
 
 [Lab 5: Graphing COVID Data II](lab5_jelia.html)
 
+[Lab 6: Mapping COVID Data](lab6_jelia.html)
+
+[COVID Map Report](map_report_jelia.html)
+
 ## References
 
 Title                    = {R: A Language and Environment for Statistical Computing},
