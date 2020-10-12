@@ -247,6 +247,7 @@ time_series_deaths_per_confirmed %>%
   theme_dark()
   ggtitle("Top 10 Global COVID-19 Deaths/Confirmed")
   
+  
 time_series_confirmed_long_states <- time_series_confirmed_long %>% 
   group_by(Province_State, Date) %>% 
   filter(Country_Region == "US") %>% 
