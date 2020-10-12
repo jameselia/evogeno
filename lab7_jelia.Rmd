@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
@@ -28,7 +28,7 @@ BiocManager::install("fission")
 BiocManager::install("ggplot2")
 ```
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 ## ----style, echo=FALSE, message=FALSE, warning=FALSE, results="asis"----------
 library("BiocStyle")
 library("rmarkdown")
