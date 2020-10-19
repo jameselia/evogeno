@@ -1,0 +1,9 @@
+*.RData filter=lfs diff=lfs merge=lfs -text
+*.Rhistory filter=lfs diff=lfs merge=lfs -text
+*.gitignore filter=lfs diff=lfs merge=lfs -text
+*.md filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.Rproj filter=lfs diff=lfs merge=lfs -text
+*.Rmd filter=lfs diff=lfs merge=lfs -text
+*.html filter=lfs diff=lfs merge=lfs -text
