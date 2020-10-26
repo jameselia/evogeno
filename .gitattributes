@@ -1,3 +1,8 @@
+*.psdgit filter=lfs diff=lfs merge=lfs -text
+lfs filter=lfs diff=lfs merge=lfs -text
+track filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+.RData filter=lfs diff=lfs merge=lfs -text
 *.RData filter=lfs diff=lfs merge=lfs -text
 *.Rhistory filter=lfs diff=lfs merge=lfs -text
 *.gitignore filter=lfs diff=lfs merge=lfs -text
